@@ -17,20 +17,16 @@ public class BinarySearch {
     }
 
     //Tìm kiếm nhị phân sdung đệ qu
-    public int binarySearchRec(int[] list, int key) {
-        int low = 0;
-        int high = list.length - 1;
+    public int binarySearchRec(int[] list, int key,int low,int high) {
         if (low <= high) {
             int mid = low + (high - low) / 2;
             if (list[mid] == key) {
                 return mid;
             }
             if (list[mid] > key) {
-                high = mid - 1;
-                return binarySearchRec(list, key);
+                return binarySearchRec(list, key,low,mid - 1);
             } else {
-                low = mid + 1;
-                return binarySearchRec(list, key);
+                return binarySearchRec(list, key,mid+1,high);
             }
         }
         return -1;
